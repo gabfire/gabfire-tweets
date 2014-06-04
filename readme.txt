@@ -13,7 +13,9 @@ Shows the latest tweets from a Twitter account in a sidebar widget. Twitter API 
 
 == Installation ==
 
-Best is to install directly from WordPress. If manual installation is required, please make sure to put all of the plugin files in a folder named `really-simple-twitter-widget` (not two nested folders) in the plugin directory, then activate the plugin through the `Plugins` menu in WordPress.
+1. Upload `gabfire-tweets` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Go to plugins page to see instructions for shortcode and php template tags
 
 = 1.0.0 =
 Initial release
