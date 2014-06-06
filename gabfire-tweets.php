@@ -113,12 +113,13 @@ class GabfireTweetsWidget extends WP_Widget {
 			'tweets_nr' => 5,
 			'tweets_of' => ''
 		);
+
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		?>
 
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title','gabfire-widget-pack'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($instance['title']); ?>" />
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo isset($instance['title']) ? esc_attr($instance['title']) : ''; ?>" />
 		</p>
 
 		<!-- Filters -->
@@ -151,23 +152,23 @@ class GabfireTweetsWidget extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id('tweets_of'); ?>"><?php _e('Enter Username or Hashtag','gabfire-widget-pack'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('tweets_of'); ?>" name="<?php echo $this->get_field_name('tweets_of'); ?>" type="text" value="<?php echo esc_attr($instance['tweets_of']); ?>" />
+			<input class="widefat" id="<?php echo $this->get_field_id('tweets_of'); ?>" name="<?php echo $this->get_field_name('tweets_of'); ?>" type="text" value="<?php echo isset($instance['tweets_of']) ? esc_attr($instance['tweets_of']) : ''; ?>" />
 		</p>
 
 		<!-- Keys -->
 
 		<p>
 			<label for="<?php echo $this->get_field_id('consumer_key'); ?>"><?php _e('Consumer Key'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('consumer_key'); ?>" name="<?php echo $this->get_field_name('consumer_key'); ?>" type="text" value="<?php echo esc_attr($instance['consumer_key']); ?>" />
+			<input class="widefat" id="<?php echo $this->get_field_id('consumer_key'); ?>" name="<?php echo $this->get_field_name('consumer_key'); ?>" type="text" value="<?php echo isset($instance['consumer_key']) ? esc_attr($instance['consumer_key']) : ''; ?>" />
 
 			<label for="<?php echo $this->get_field_id('consumer_secret'); ?>"><?php _e('Consumer Secret','gabfire-widget-pack'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('consumer_secret'); ?>" name="<?php echo $this->get_field_name('consumer_secret'); ?>" type="text" value="<?php echo esc_attr($instance['consumer_secret']); ?>" />
+			<input class="widefat" id="<?php echo $this->get_field_id('consumer_secret'); ?>" name="<?php echo $this->get_field_name('consumer_secret'); ?>" type="text" value="<?php echo isset($instance['consumer_secret']) ? esc_attr($instance['consumer_secret']) : ''; ?>" />
 
 			<label for="<?php echo $this->get_field_id('access_token_key'); ?>"><?php _e('Access Token Key','gabfire-widget-pack'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('access_token_key'); ?>" name="<?php echo $this->get_field_name('access_token_key'); ?>" type="text" value="<?php echo esc_attr($instance['access_token_key']); ?>" />
+			<input class="widefat" id="<?php echo $this->get_field_id('access_token_key'); ?>" name="<?php echo $this->get_field_name('access_token_key'); ?>" type="text" value="<?php echo isset($instance['access_token_key']) ? esc_attr($instance['access_token_key']) : ''; ?>" />
 
 			<label for="<?php echo $this->get_field_id('access_token_secret'); ?>"><?php _e('Access Token Secret','gabfire-widget-pack'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id('access_token_secret'); ?>" name="<?php echo $this->get_field_name('access_token_secret'); ?>" type="text" value="<?php echo esc_attr($instance['access_token_secret']); ?>" />
+			<input class="widefat" id="<?php echo $this->get_field_id('access_token_secret'); ?>" name="<?php echo $this->get_field_name('access_token_secret'); ?>" type="text" value="<?php echo isset($instance['access_token_secret']) ? esc_attr($instance['access_token_secret']) : ''; ?>" />
 		</p>
 
 		<p><?php _e('Get recent Tweets based on an username or #hashtag. Visit <a target="_blank" href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a> to get your application and secret keys.','gabfire-widget-pack'); ?></p>
