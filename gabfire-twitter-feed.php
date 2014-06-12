@@ -107,7 +107,7 @@ class GabfireTweetsWidget extends WP_Widget {
      */
     function form($instance) {
 		$defaults	= array(
-			'title' => 'Twitter Widget',
+			'title' => 'Twitter Feed',
 			'tweets_base' => 'username',
 			'profile_photo' => 'display',
 			'tweets_nr' => 5,
