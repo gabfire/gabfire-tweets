@@ -20,8 +20,20 @@
 */
 
 add_action('widgets_init', array('GabfireTweetsWidget', 'gabfire_tweets_register_widget'));
+add_action('init', array('GabfireTweetsWidget', 'gabfire_load_textdoamin'));
 
 class GabfireTweetsWidget extends WP_Widget {
+
+	private static $text_domain = 'gabfire-twitter-feed';
+
+	/**
+	 * Load the text domain
+	 *
+	 * @since 1.0.0
+	 */
+	static function gabfire_load_textdoamin() {
+		load_plugin_textdomain(self::$text_domain, false, basename( dirname( __FILE__ ) ) . '/languages' );
+	}
 
 	/**
 	 * Hooks to 'widgets_init'
@@ -39,9 +51,9 @@ class GabfireTweetsWidget extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-			'gabfire-tweets-widget', // Base ID
-			__('Gabfire Twitter Feed', 'text_domain'), // Name
-			array( 'description' => __( 'Display a twitter feed based off username or search parameters', 'text_domain' ), 'width' => 500) // Args
+			'gabfire-twitter-feed', // Base ID
+			__('Gabfire Twitter Feed', self::$text_domain), // Name
+			array( 'description' => __( 'Display a twitter feed based off username or search parameters', self::$text_domain), 'width' => 500) // Args
 		);
 	}
 
@@ -118,30 +130,30 @@ class GabfireTweetsWidget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title','gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', self::$text_domain); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo isset($instance['title']) ? esc_attr($instance['title']) : ''; ?>" />
 		</p>
 
 		<!-- Filters -->
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'tweets_base' ); ?>"><?php _e('Tweets based on:', 'gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_id( 'tweets_base' ); ?>"><?php _e('Tweets based on:', self::$text_domain); ?></label>
 			<select id="<?php echo $this->get_field_id( 'tweets_base' ); ?>" name="<?php echo $this->get_field_name( 'tweets_base' ); ?>">
-				<option value="username" <?php if ( 'username' == $instance['tweets_base'] ) echo 'selected="selected"'; ?>><?php _e('Username','gabfire-widget-pack'); ?></option>
-				<option value="hashtag" <?php if ( 'hashtag' == $instance['tweets_base'] ) echo 'selected="selected"'; ?>><?php _e('Hashtag','gabfire-widget-pack'); ?></option>
+				<option value="username" <?php if ( 'username' == $instance['tweets_base'] ) echo 'selected="selected"'; ?>><?php _e('Username', self::$text_domain); ?></option>
+				<option value="hashtag" <?php if ( 'hashtag' == $instance['tweets_base'] ) echo 'selected="selected"'; ?>><?php _e('Hashtag', self::$text_domain); ?></option>
 			</select>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'profile_photo' ); ?>"><?php _e('Twitter profile photo:', 'gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_id( 'profile_photo' ); ?>"><?php _e('Twitter profile photo:', self::$text_domain); ?></label>
 			<select id="<?php echo $this->get_field_id( 'profile_photo' ); ?>" name="<?php echo $this->get_field_name( 'profile_photo' ); ?>">
-				<option value="display" <?php if ( 'display' == $instance['profile_photo'] ) echo 'selected="selected"'; ?>><?php _e('Display','gabfire-widget-pack'); ?></option>
-				<option value="hide" <?php if ( 'hide' == $instance['profile_photo'] ) echo 'selected="selected"'; ?>><?php _e('Hide','gabfire-widget-pack'); ?></option>
+				<option value="display" <?php if ( 'display' == $instance['profile_photo'] ) echo 'selected="selected"'; ?>><?php _e('Display', self::$text_domain); ?></option>
+				<option value="hide" <?php if ( 'hide' == $instance['profile_photo'] ) echo 'selected="selected"'; ?>><?php _e('Hide', self::$text_domain); ?></option>
 			</select>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_name( 'tweets_nr' ); ?>"><?php _e('Number of Tweets?','gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_name( 'tweets_nr' ); ?>"><?php _e('Number of Tweets?', self::$text_domain); ?></label>
 			<select id="<?php echo $this->get_field_id( 'tweets_nr' ); ?>" name="<?php echo $this->get_field_name( 'tweets_nr' ); ?>">
 			<?php
 				for ( $i = 1; $i <= 10; ++$i )
@@ -151,27 +163,27 @@ class GabfireTweetsWidget extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id('tweets_of'); ?>"><?php _e('Enter Username or Hashtag','gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_id('tweets_of'); ?>"><?php _e('Enter Username or Hashtag', self::$text_domain); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('tweets_of'); ?>" name="<?php echo $this->get_field_name('tweets_of'); ?>" type="text" value="<?php echo isset($instance['tweets_of']) ? esc_attr($instance['tweets_of']) : ''; ?>" />
 		</p>
 
 		<!-- Keys -->
 
 		<p>
-			<label for="<?php echo $this->get_field_id('consumer_key'); ?>"><?php _e('API Key'); ?></label>
+			<label for="<?php echo $this->get_field_id('consumer_key'); ?>"><?php _e('API Key', self::$text_domain); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('consumer_key'); ?>" name="<?php echo $this->get_field_name('consumer_key'); ?>" type="text" value="<?php echo isset($instance['consumer_key']) ? esc_attr($instance['consumer_key']) : ''; ?>" />
 
-			<label for="<?php echo $this->get_field_id('consumer_secret'); ?>"><?php _e('API Secret','gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_id('consumer_secret'); ?>"><?php _e('API Secret', self::$text_domain); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('consumer_secret'); ?>" name="<?php echo $this->get_field_name('consumer_secret'); ?>" type="text" value="<?php echo isset($instance['consumer_secret']) ? esc_attr($instance['consumer_secret']) : ''; ?>" />
 
-			<label for="<?php echo $this->get_field_id('access_token_key'); ?>"><?php _e('Access Token Key','gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_id('access_token_key'); ?>"><?php _e('Access Token Key', self::$text_domain); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('access_token_key'); ?>" name="<?php echo $this->get_field_name('access_token_key'); ?>" type="text" value="<?php echo isset($instance['access_token_key']) ? esc_attr($instance['access_token_key']) : ''; ?>" />
 
-			<label for="<?php echo $this->get_field_id('access_token_secret'); ?>"><?php _e('Access Token Secret','gabfire-widget-pack'); ?></label>
+			<label for="<?php echo $this->get_field_id('access_token_secret'); ?>"><?php _e('Access Token Secret', self::$text_domain); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('access_token_secret'); ?>" name="<?php echo $this->get_field_name('access_token_secret'); ?>" type="text" value="<?php echo isset($instance['access_token_secret']) ? esc_attr($instance['access_token_secret']) : ''; ?>" />
 		</p>
 
-		<p><?php _e('Get recent Tweets based on an username or #hashtag. Visit <a target="_blank" href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a> to get your application and secret keys.','gabfire-widget-pack'); ?></p>
+		<p><?php _e('Get recent Tweets based on an username or #hashtag. Visit <a target="_blank" href="https://dev.twitter.com/apps">https://dev.twitter.com/apps</a> to get your application and secret keys.', self::$text_domain); ?></p>
 
 		<?php
 	}
