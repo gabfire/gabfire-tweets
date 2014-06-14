@@ -1,5 +1,5 @@
 === Gabfire Twitter Feed ===
-Contributors: gabfire
+Contributors: gabfire, kjbenk
 Tags: twitter, twitter feed, social feed, twitter widget, tweet, twitter timeline, tweet list,  social, social media, twitter sidebar, sidebar, social sidebar, simple twitter, twitter api 1.1, api 1.1, oauth, twitter oauth, gabfire themes
 Requires at least: 3.4+
 Tested up to: 3.9.1
