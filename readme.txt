@@ -2,8 +2,8 @@
 Contributors: gabfire, kjbenk
 Tags: twitter, twitter feed, social feed, twitter widget, tweet, twitter timeline, tweet list,  social, social media, twitter sidebar, sidebar, social sidebar, simple twitter, twitter api 1.1, api 1.1, oauth, twitter oauth, gabfire themes
 Requires at least: 3.4+
-Tested up to: 3.9.1
-Stable tag: 1.0
+Tested up to: 4.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,9 @@ You can install the Gabfire Widget Pack from your WordPress Dashboard or manuall
 3. Gabfire Twitter Feed Widget Output
 
 == Changelog ==
+
+= 1.0.1 =
+* Minor Updates
 
 = 1.0 =
 * Initial release

@@ -4,7 +4,7 @@
 	Plugin URI: http://www.gabfirethemes.com
 	Description: Display tweets in a sidebar based off of many criteria.
 	Author: Gabfire Themes
-	Version: 1.0
+	Version: 1.0.1
 	Author URI: http://www.gabfirethemes.com
 
 	Copyright 2013 Gabfire Themes (email : info@gabfire.com)
